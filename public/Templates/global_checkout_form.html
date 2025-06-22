@@ -497,6 +497,101 @@
             word-break: break-word; /* Break long words */
         }
 
+        /* Specific styles for the footer, extracted from the original document */
+        .new-footer {
+            background-color: #1a1a1a; /* bg-gray-900 from Tailwind, equivalent to this dark gray */
+            color: white;
+            padding: 2rem 1.5rem; /* py-8 px-6 */
+            text-align: center;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
+
+        @media (min-width: 768px) {
+            .new-footer {
+                padding-left: 5rem; /* md:px-20 */
+                padding-right: 5rem; /* md:px-20 */
+            }
+        }
+
+        .banimal-footer-content {
+            max-width: 48rem; /* max-w-2xl */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .banimal-footer-content h1 {
+            font-size: 2rem; /* text-3xl */
+            line-height: 1.25; /* leading-tight */
+            font-weight: 800; /* font-extrabold */
+            color: #ffffff; /* text-white */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+
+        @media (min-width: 768px) {
+            .banimal-footer-content h1 {
+                font-size: 2.25rem; /* md:text-4xl */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .banimal-footer-content h1 {
+                font-size: 3rem; /* lg:text-5xl */
+            }
+        }
+
+        .banimal-footer-content .text-blue-400 {
+            color: #60a5fa; /* Tailwind's blue-400 */
+        }
+
+        .banimal-footer-content p {
+            font-size: 1rem; /* text-base */
+            line-height: 1.625; /* leading-relaxed */
+            color: #d1d5db; /* text-gray-300 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+
+        @media (min-width: 768px) {
+            .banimal-footer-content p {
+                font-size: 1.125rem; /* md:text-lg */
+            }
+        }
+
+        .new-footer .cta-button {
+            background-color: #3b82f6; /* bg-blue-600 */
+            color: #ffffff; /* text-white */
+            font-weight: 600; /* font-semibold */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 9999px; /* rounded-full */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition-property: background-color;
+            transition-duration: 0.2s; /* duration-200 */
+            text-decoration: none; /* Ensure it looks like a button, not a plain link */
+        }
+
+        .new-footer .cta-button:hover {
+            background-color: #2563eb; /* hover:bg-blue-700 */
+        }
+
+        .new-footer .cta-button .ml-2 {
+            margin-left: 0.5rem; /* ml-2 */
+        }
+
+        .new-footer .copyright {
+            font-size: 0.875rem; /* text-sm */
+            color: #6b7280; /* text-gray-500 */
+            margin-top: 2rem; /* mt-8 */
+        }
+
+        .new-footer .copyright a {
+            color: #60a5fa; /* text-blue-400 */
+            text-decoration: none;
+        }
+
+        .new-footer .copyright a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body lang="en">
@@ -643,16 +738,16 @@
     <!-- Planet Pulse Text -->
     <p id="planet-text" class="text-center text-xl font-bold mt-8 mb-8" data-lang-key="planet-pulse-text"></p>
 
-    <!-- Global Banimal Footer -->
-    <footer class="bg-gray-900 text-white py-8 px-6 md:px-20">
+    <!-- === CONSOLIDATED FOOTER SECTION === -->
+    <footer class="new-footer">
         <div class="banimal-footer-content text-center max-w-2xl mx-auto">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white mb-2">
                 <span data-lang-key="banimal-footer-heading"></span> <br>
                 <span class="text-blue-400" data-lang-key="banimal-footer-slogan"></span>
             </h1>
             <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-6" data-lang-key="banimal-footer-text"></p>
-            <a href="global_brands.html" class="cta-button bg-blue-600 text-white font-semibold py-3 px-6 rounded-full inline-flex items-center justify-center hover:bg-blue-700 transition-colors duration-200" data-lang-key="explore-banimal-button">
-                <i class="fas fa-arrow-right ml-2"></i>
+            <a href="global_brands.html" class="cta-button">
+                Explore Banimal's World <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
         <p class="copyright text-sm text-gray-500 mt-8" data-lang-key="copyright-text-footer"></p>
@@ -773,8 +868,298 @@
                 "light-mode-button": "Liicht Modus",
                 "dark-mode-button": "Däischter Modus",
                 "hyper-mode-button": "Hyper Modus"
-            }
-            // Add more languages here if needed
+            },
+            es: { // Spanish translations
+                "lang-name": "Español",
+                "announcement-text": "🚀 ¡Acelera tu flujo de trabajo! ¡Obtén un 15% de descuento en Pro Grid por tiempo limitado!",
+                "header-slogan": "¡Compra un artículo y nosotros patrocinamos uno! ❤️",
+                "back-to-shop": "← Volver a la Tienda",
+                "complete-purchase": "Completar Tu Compra",
+                "shipping-step": "Envío",
+                "payment-step": "Pago",
+                "review-step": "Revisar",
+                "shipping-info-heading": "Información de Envío",
+                "full-name-label": "Nombre Completo",
+                "full-name-placeholder": "Juan Pérez",
+                "address-label": "Dirección",
+                "address-placeholder": "123 Calle Principal",
+                "city-label": "Ciudad",
+                "city-placeholder": "Ciudad de Luxemburgo",
+                "zip-code-label": "Código Postal",
+                "zip-code-placeholder": "28001",
+                "payment-method-heading": "Método de Pago",
+                "card-number-label": "Número de Tarjeta",
+                "month-label": "Mes",
+                "year-label": "Año",
+                "cvv-label": "CVV",
+                "order-summary-heading": "Resumen del Pedido",
+                "product-item-1": "Artículo del Producto 1",
+                "product-item-2": "Artículo del Producto 2",
+                "shipping-cost": "Envío",
+                "total-cost": "Total",
+                "ai-help-heading": "Ayuda de IA y Preguntas Frecuentes",
+                "ai-help-slogan": "Haz tu pregunta sobre Banimal Loop™ o FAA.zone, y nuestra IA te responderá.",
+                "your-question-label": "Tu Pregunta:",
+                "faq-placeholder": "Ejemplo: ¿Cuál es el protocolo principal de Banimal Loop™?",
+                "get-answer-button": "Obtener Respuesta ✨",
+                "generating-answer-loading": "Generando respuesta...",
+                "error-no-ai-answer": "Error: No hay respuesta de la IA. Por favor, inténtalo de nuevo más tarde.",
+                "reason": "Razón:",
+                "error-ai-connection": "Error: No se pudo conectar al modelo de lenguaje. Verifica la consola por problemas de red.",
+                "please-enter-question": "Por favor, introduce una pregunta para obtener una respuesta.",
+                "finalize-button": "Finalizar y Confirmar Pedido",
+                "review-order-button": "Revisar Detalles del Pedido",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™:",
+                "banimal-footer-slogan": "🐑Criaturas Amables. Impacto Global.",
+                "banimal-footer-text": "Descubre el mundo de Banimal de artículos esenciales para bebés y soluciones de iluminación innovadoras. Por cada compra, entregamos el mismo artículo a un niño necesitado, identificado por los datos de la Red de Seguridad Baobab.",
+                "explore-banimal-button": "Explorar el Mundo de Banimal",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™. Todos los derechos reservados.",
+                "powered-by-text": "Una orgullosa iniciativa de Fruitful™ Treaty System™"
+            },
+            fr: { // French translations
+                "lang-name": "Français",
+                "announcement-text": "🚀 Accélérez votre flux de travail ! Obtenez 15% de réduction sur Pro Grid pour un temps limité !",
+                "header-slogan": "Achetez un article, et nous en parrainons un ! ❤️",
+                "back-to-shop": "← Retour à la Boutique",
+                "complete-purchase": "Finaliser Votre Achat",
+                "shipping-step": "Expédition",
+                "payment-step": "Paiement",
+                "review-step": "Vérifier",
+                "shipping-info-heading": "Informations de Livraison",
+                "full-name-label": "Nom Complet",
+                "full-name-placeholder": "Jean Dupont",
+                "address-label": "Adresse",
+                "address-placeholder": "123 Rue Principale",
+                "city-label": "Ville",
+                "city-placeholder": "Ville de Luxembourg",
+                "zip-code-label": "Code Postal",
+                "zip-code-placeholder": "L-1111",
+                "payment-method-heading": "Méthode de Paiement",
+                "card-number-label": "Numéro de Carte",
+                "month-label": "Mois",
+                "year-label": "Année",
+                "cvv-label": "CVV",
+                "order-summary-heading": "Récapitulatif de Commande",
+                "product-item-1": "Article Produit 1",
+                "product-item-2": "Article Produit 2",
+                "shipping-cost": "Livraison",
+                "total-cost": "Total",
+                "ai-help-heading": "Aide IA & Réponses FAQ",
+                "ai-help-slogan": "Posez votre question sur Banimal Loop™ ou FAA.zone, et notre IA vous répondra.",
+                "your-question-label": "Votre Question :",
+                "faq-placeholder": "Ex: Quel est le protocole de base de Banimal Loop™ ?",
+                "get-answer-button": "Obtenir la Réponse ✨",
+                "generating-answer-loading": "Génération de la réponse...",
+                "error-no-ai-answer": "Erreur : Pas de réponse de l'IA. Veuillez réessayer plus tard.",
+                "reason": "Raison :",
+                "error-ai-connection": "Erreur : Impossible de se connecter au modèle de langage. Vérifiez la console pour les problèmes de réseau.",
+                "please-enter-question": "Veuillez saisir une question pour obtenir une réponse.",
+                "finalize-button": "Finaliser et Confirmer la Commande",
+                "review-order-button": "Vérifier les Détails de la Commande",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™ :",
+                "banimal-footer-slogan": "🐑Créatures Douces. Impact Mondial.",
+                "banimal-footer-text": "Découvrez le monde de Banimal : des essentiels pour bébés et des solutions d'éclairage innovantes. Pour chaque achat, nous livrons le même article à un enfant dans le besoin, identifié grâce aux données du Réseau de Sécurité Baobab.",
+                "explore-banimal-button": "Explorer le Monde de Banimal",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™. Tous droits réservés.",
+                "powered-by-text": "Une fière initiative de Fruitful™ Treaty System™"
+            },
+            de: { // German translations
+                "lang-name": "Deutsch",
+                "announcement-text": "🚀 Beschleunigen Sie Ihren Workflow! Erhalten Sie 15% Rabatt auf Pro Grid für begrenzte Zeit!",
+                "header-slogan": "Kaufen Sie einen Artikel, und wir sponsern einen! ❤️",
+                "back-to-shop": "← Zurück zum Shop",
+                "complete-purchase": "Kauf abschließen",
+                "shipping-step": "Versand",
+                "payment-step": "Zahlung",
+                "review-step": "Überprüfung",
+                "shipping-info-heading": "Versandinformationen",
+                "full-name-label": "Vollständiger Name",
+                "full-name-placeholder": "Max Mustermann",
+                "address-label": "Adresse",
+                "address-placeholder": "Musterstraße 123",
+                "city-label": "Stadt",
+                "city-placeholder": "Luxemburg-Stadt",
+                "zip-code-label": "Postleitzahl",
+                "zip-code-placeholder": "12345",
+                "payment-method-heading": "Zahlungsmethode",
+                "card-number-label": "Kartennummer",
+                "month-label": "Monat",
+                "year-label": "Jahr",
+                "cvv-label": "CVV",
+                "order-summary-heading": "Bestellübersicht",
+                "product-item-1": "Produktartikel 1",
+                "product-item-2": "Produktartikel 2",
+                "shipping-cost": "Versand",
+                "total-cost": "Gesamt",
+                "ai-help-heading": "KI-Hilfe & FAQ-Antworten",
+                "ai-help-slogan": "Stellen Sie Ihre Frage zu Banimal Loop™ oder FAA.zone, und unsere KI wird antworten.",
+                "your-question-label": "Ihre Frage:",
+                "faq-placeholder": "z.B. Was ist das Kernprotokoll von Banimal Loop™?",
+                "get-answer-button": "Antwort erhalten ✨",
+                "generating-answer-loading": "Antwort wird generiert...",
+                "error-no-ai-answer": "Fehler: Keine Antwort von der KI. Bitte versuchen Sie es später noch einmal.",
+                "reason": "Grund:",
+                "error-ai-connection": "Fehler: Verbindung zum Sprachmodell konnte nicht hergestellt werden. Überprüfen Sie die Konsole auf Netzwerkprobleme.",
+                "please-enter-question": "Bitte geben Sie eine Frage ein, um eine Antwort zu erhalten.",
+                "finalize-button": "Bestellung abschließen & bestätigen",
+                "review-order-button": "Bestelldetails überprüfen",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™:",
+                "banimal-footer-slogan": "🐑Freundliche Kreaturen. Globaler Einfluss.",
+                "banimal-footer-text": "Entdecken Sie Banimals Welt der durchdachten Babyartikel und innovativen Beleuchtung. Für jeden Kauf liefern wir den gleichen Artikel an ein bedürftiges Kind, identifiziert durch die datengestützten Erkenntnisse des Baobab Sicherheitsnetzwerks.",
+                "explore-banimal-button": "Entdecken Sie Banimals Welt",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™. Alle Rechte vorbehalten.",
+                "powered-by-text": "Eine stolze Initiative von Fruitful™ Treaty System™"
+            },
+            zh: { // Chinese Simplified translations
+                "lang-name": "简体中文",
+                "announcement-text": "🚀 加速您的工作流程！限时享受 Pro Grid 15% 折扣！",
+                "header-slogan": "买一件，我们赞助一件！❤️",
+                "back-to-shop": "← 返回商店",
+                "complete-purchase": "完成您的购买",
+                "shipping-step": "配送",
+                "payment-step": "支付",
+                "review-step": "审查",
+                "shipping-info-heading": "配送信息",
+                "full-name-label": "全名",
+                "full-name-placeholder": "张三",
+                "address-label": "地址",
+                "address-placeholder": "主街123号",
+                "city-label": "城市",
+                "city-placeholder": "卢森堡市",
+                "zip-code-label": "邮政编码",
+                "zip-code-placeholder": "100000",
+                "payment-method-heading": "支付方式",
+                "card-number-label": "卡号",
+                "month-label": "月",
+                "year-label": "年",
+                "cvv-label": "CVV",
+                "order-summary-heading": "订单摘要",
+                "product-item-1": "商品1",
+                "product-item-2": "商品2",
+                "shipping-cost": "运费",
+                "total-cost": "总计",
+                "ai-help-heading": "AI 帮助和常见问题解答",
+                "ai-help-slogan": "提出您关于 Banimal Loop™ 或 FAA.zone 的问题，我们的 AI 将为您解答。",
+                "your-question-label": "您的问题：",
+                "faq-placeholder": "例如：Banimal Loop™ 的核心协议是什么？",
+                "get-answer-button": "获取答案 ✨",
+                "generating-answer-loading": "正在生成答案...",
+                "error-no-ai-answer": "错误：AI 没有返回答案。请稍后再试。",
+                "reason": "原因：",
+                "error-ai-connection": "错误：无法连接到语言模型。请检查控制台以查看网络问题。",
+                "please-enter-question": "请输入问题以获取答案。",
+                "finalize-button": "完成并确认订单",
+                "review-order-button": "查看订单详情",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™：",
+                "banimal-footer-slogan": "🐑善良生物。全球影响。",
+                "banimal-footer-text": "探索 Banimal 的世界：周到的婴儿必需品和创新的照明产品。每次购买，我们都会将相同的物品捐赠给巴奥巴安全网络数据洞察识别出的有需要的儿童。",
+                "explore-banimal-button": "探索 Banimal 的世界",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™。保留所有权利。",
+                "powered-by-text": "Fruitful™ Treaty System™ 的一项自豪倡议"
+            },
+            hi: { // Hindi translations
+                "lang-name": "हिंदी",
+                "announcement-text": "🚀 अपने वर्कफ़्लो को तेज़ करें! सीमित समय के लिए प्रो ग्रिड पर 15% की छूट पाएं!",
+                "header-slogan": "एक आइटम खरीदें, और हम एक को प्रायोजित करते हैं! ❤️",
+                "back-to-shop": "← दुकान पर वापस",
+                "complete-purchase": "अपनी खरीद पूरी करें",
+                "shipping-step": "शिपिंग",
+                "payment-step": "भुगतान",
+                "review-step": "समीक्षा",
+                "shipping-info-heading": "शिपिंग जानकारी",
+                "full-name-label": "पूरा नाम",
+                "full-name-placeholder": "जॉन डो",
+                "address-label": "पता",
+                "address-placeholder": "123 मुख्य सड़क",
+                "city-label": "शहर",
+                "city-placeholder": "लक्ज़मबर्ग शहर",
+                "zip-code-label": "ज़िप कोड",
+                "zip-code-placeholder": "110001",
+                "payment-method-heading": "भुगतान विधि",
+                "card-number-label": "कार्ड नंबर",
+                "month-label": "महीना",
+                "year-label": "साल",
+                "cvv-label": "CVV",
+                "order-summary-heading": "आर्डर सारांश",
+                "product-item-1": "उत्पाद आइटम 1",
+                "product-item-2": "उत्पाद आइटम 2",
+                "shipping-cost": "शिपिंग",
+                "total-cost": "कुल",
+                "ai-help-heading": "एआई मदद और अक्सर पूछे जाने वाले प्रश्न",
+                "ai-help-slogan": "Banimal Loop™ या FAA.zone के बारे में अपना प्रश्न पूछें, और हमारी एआई जवाब देगी।",
+                "your-question-label": "आपका प्रश्न:",
+                "faq-placeholder": "उदाहरण के लिए, Banimal Loop™ का मुख्य प्रोटोकॉल क्या है?",
+                "get-answer-button": "उत्तर प्राप्त करें ✨",
+                "generating-answer-loading": "उत्तर उत्पन्न हो रहा है...",
+                "error-no-ai-answer": "त्रुटि: एआई से कोई जवाब नहीं। कृपया बाद में पुनः प्रयास करें।",
+                "reason": "कारण:",
+                "error-ai-connection": "त्रुटि: भाषा मॉडल से कनेक्ट नहीं हो सका। नेटवर्क समस्याओं के लिए कंसोल जांचें।",
+                "please-enter-question": "कृपया उत्तर प्राप्त करने के लिए एक प्रश्न दर्ज करें।",
+                "finalize-button": "ऑर्डर को अंतिम रूप दें और पुष्टि करें",
+                "review-order-button": "ऑर्डर विवरण की समीक्षा करें",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™:",
+                "banimal-footer-slogan": "🐑दयालु जीव। वैश्विक प्रभाव।",
+                "banimal-footer-text": "विचारशील शिशु आवश्यक वस्तुओं और अभिनव प्रकाश व्यवस्था की Banimal दुनिया की खोज करें। प्रत्येक खरीद के लिए, हम बाओबाब सुरक्षा नेटवर्क के डेटा-संचालित अंतर्दृष्टि द्वारा पहचाने गए जरूरतमंद बच्चे को वही आइटम वितरित करते हैं।",
+                "explore-banimal-button": "Banimal की दुनिया का अन्वेषण करें",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™. सभी अधिकार सुरक्षित।",
+                "powered-by-text": "फ्रूटफुल™ ट्रीटी सिस्टम™ की एक गर्वपूर्ण पहल"
+            },
+            ar: { // Arabic translations
+                "lang-name": "العربية",
+                "announcement-text": "🚀 سارع بتحسين سير عملك! احصل على خصم 15% على برو جريد لفترة محدودة!",
+                "header-slogan": "اشترِ منتجًا واحدًا، ونحن نرعى واحدًا! ❤️",
+                "back-to-shop": "← العودة إلى المتجر",
+                "complete-purchase": "إتمام عملية الشراء",
+                "shipping-step": "الشحن",
+                "payment-step": "الدفع",
+                "review-step": "المراجعة",
+                "shipping-info-heading": "معلومات الشحن",
+                "full-name-label": "الاسم الكامل",
+                "full-name-placeholder": "محمد علي",
+                "address-label": "العنوان",
+                "address-placeholder": "123 الشارع الرئيسي",
+                "city-label": "المدينة",
+                "city-placeholder": "مدينة لوكسمبورغ",
+                "zip-code-label": "الرمز البريدي",
+                "zip-code-placeholder": "10000",
+                "payment-method-heading": "طريقة الدفع",
+                "card-number-label": "رقم البطاقة",
+                "month-label": "الشهر",
+                "year-label": "السنة",
+                "cvv-label": "CVV",
+                "order-summary-heading": "ملخص الطلب",
+                "product-item-1": "المنتج 1",
+                "product-item-2": "المنتج 2",
+                "shipping-cost": "الشحن",
+                "total-cost": "الإجمالي",
+                "ai-help-heading": "مساعدة الذكاء الاصطناعي والإجابات الشائعة",
+                "ai-help-slogan": "اطرح سؤالك حول Banimal Loop™ أو FAA.zone، وسيقوم الذكاء الاصطناعي لدينا بالإجابة.",
+                "your-question-label": "سؤالك:",
+                "faq-placeholder": "مثال: ما هو البروتوكول الأساسي لـ Banimal Loop™؟",
+                "get-answer-button": "احصل على الإجابة ✨",
+                "generating-answer-loading": "جارٍ إنشاء الإجابة...",
+                "error-no-ai-answer": "خطأ: لا توجد إجابة من الذكاء الاصطناعي. يرجى المحاولة مرة أخرى لاحقًا.",
+                "reason": "السبب:",
+                "error-ai-connection": "خطأ: لم يتمكن من الاتصال بنموذج اللغة. تحقق من وحدة التحكم لمشاكل الشبكة.",
+                "please-enter-question": "الرجاء إدخال سؤال للحصول على إجابة.",
+                "finalize-button": "إنهاء وتأكيد الطلب",
+                "review-order-button": "مراجعة تفاصيل الطلب",
+                "planet-pulse-text": "fruchtbarer.planet.wandel",
+                "banimal-footer-heading": "Banimal™:",
+                "banimal-footer-slogan": "🐑مخلوقات طيبة. تأثير عالمي.",
+                "banimal-footer-text": "اكتشف عالم Banimal من أساسيات الأطفال المدروسة وحلول الإضاءة المبتكرة. مقابل كل عملية شراء، نقدم نفس العنصر لطفل محتاج، يتم تحديده من خلال رؤى شبكة أمان الباوباب المستندة إلى البيانات.",
+                "explore-banimal-button": "استكشف عالم Banimal",
+                "copyright-text-footer": "&copy; 👟2025 Banimal™. جميع الحقوق محفوظة.",
+                "powered-by-text": "مبادرة فخرية من Fruitful™ Treaty System™"
+            },
+             "light-mode-button": "Light Mode",
+             "dark-mode-button": "Dark Mode",
+             "hyper-mode-button": "Hyper Mode"
         };
 
         // Function to set the current language and update all translatable elements
@@ -797,13 +1182,15 @@
                             element.textContent = translations[lang][key];
                         }
                     } else if (key === "shipping-info-heading" || key === "payment-method-heading" || key === "order-summary-heading" || key === "ai-help-heading") {
-                         // For headings that contain text AND icons, handle text explicitly
+                            // For headings that contain text AND icons, handle text explicitly
                         const iconHtml = element.innerHTML.match(/<i class=".*"><\/i>/); // Extract icon HTML if present
                         if (iconHtml) {
                             element.innerHTML = iconHtml[0] + ' ' + translations[lang][key];
                         } else {
                             element.textContent = translations[lang][key];
                         }
+                    } else if (key === "light-mode-button" || key === "dark-mode-button" || key === "hyper-mode-button") {
+                        element.textContent = translations[lang][key];
                     }
                     else {
                         element.textContent = translations[lang][key];
@@ -828,6 +1215,8 @@
                             } else {
                                 element.textContent = translations['en'][key];
                             }
+                        } else if (key === "light-mode-button" || key === "dark-mode-button" || key === "hyper-mode-button") {
+                            element.textContent = translations['en'][key];
                         }
                         else {
                             element.textContent = translations['en'][key];
