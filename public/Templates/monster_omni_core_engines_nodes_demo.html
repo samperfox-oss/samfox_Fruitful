@@ -1340,8 +1340,8 @@
                             document.getElementById(`${name}Result`).textContent = result + (name !== 'MirrorLoop' ? '%' : '');
                             document.getElementById(`${name}Metrics`).textContent = metrics;
                             updateAbilityStatus(name, 'Optimal', 'success');
-                            if (nodeCard) { // Ensure nodeCard is not null before removing active class
-                                nodeCard.classList.remove('active');
+                            if (nodeCard) {
+                                nodeCard.classList.remove('active'); // Remove active class after completion
                             }
 
                             // Log to global operations console
@@ -1351,12 +1351,12 @@
                             await new Promise(r => setTimeout(r, 200)); // Small pause
 
                             // Log to contextual consoles if messages exist
-                            if (actionMessageFinancial && financialOperationsLog) {
+                            if (actionMessageFinancial) {
                                 logContextualOperation(financialOperationsLog, actionMessageFinancial, 'info');
                                 await new Promise(r => setTimeout(r, 100));
                                 logContextualOperation(financialOperationsLog, outcomeMessageFinancial, 'success');
                             }
-                            if (actionMessageDataGov && dataGovernanceLog) {
+                            if (actionMessageDataGov) {
                                 logContextualOperation(dataGovernanceLog, actionMessageDataGov, 'info');
                                 await new Promise(r => setTimeout(r, 100));
                                 logContextualOperation(dataGovernanceLog, outcomeMessageDataGov, 'success');
