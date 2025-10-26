@@ -1,0 +1,462 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Historical Design Inspiration Generator | FAA.ZONE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e2e8f0;
+        }
+        .design-card {
+            background: rgba(30, 30, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .design-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+        .era-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-swatch:hover {
+            transform: scale(1.1);
+        }
+        .pattern-preview {
+            background-size: 30px 30px;
+            height: 100px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .invitation-preview {
+            background: white;
+            color: #1a1a1a;
+            min-height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .loading-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+                🎨 Historical Design Inspiration Generator
+            </h1>
+            <p class="text-xl text-gray-300 mb-2">Powered by FAA.ZONE Sovereign Scrolls Architecture</p>
+            <p class="text-sm text-gray-400">From Madiba-inspired global campaigns to intimate staff invitations</p>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="design-card rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span>⚙️</span> Design Parameters
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Type -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Project Type</label>
+                    <select id="projectType" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        <option value="brand">Brand Identity</option>
+                        <option value="event">Event Invitation</option>
+                        <option value="campaign">Marketing Campaign</option>
+                        <option value="packaging">Product Packaging</option>
+                        <option value="website">Website Design</option>
+                        <option value="print">Print Collateral</option>
+                    </select>
+                </div>
+
+                <!-- Historical Era -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Historical Era</label>
+                    <select id="historicalEra" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        <option value="art-deco">Art Deco (1920s-1930s)</option>
+                        <option value="bauhaus">Bauhaus (1919-1933)</option>
+                        <option value="victorian">Victorian (1837-1901)</option>
+                        <option value="art-nouveau">Art Nouveau (1890-1910)</option>
+                        <option value="swiss">Swiss Modernism (1950s)</option>
+                        <option value="psychedelic">Psychedelic (1960s-70s)</option>
+                        <option value="memphis">Memphis Design (1980s)</option>
+                        <option value="brutalist">Brutalism (1950s-1970s)</option>
+                        <option value="african">African Renaissance</option>
+                        <option value="japanese">Japanese Minimalism</option>
+                    </select>
+                </div>
+
+                <!-- Sector/Industry -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Sector (FAA.ZONE)</label>
+                    <select id="sector" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        <option value="agriculture">🌱 Agriculture</option>
+                        <option value="banking">🏦 Banking</option>
+                        <option value="creative">🖋️ Creative</option>
+                        <option value="education">📚 Education</option>
+                        <option value="health">⚕️ Health</option>
+                        <option value="logistics">📦 Logistics</option>
+                        <option value="fashion">✂️ Fashion</option>
+                        <option value="technology">💻 Technology</option>
+                    </select>
+                </div>
+
+                <!-- Event Details (conditional) -->
+                <div id="eventDetails" class="hidden md:col-span-2 lg:col-span-3">
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Event Name</label>
+                            <input type="text" id="eventName" placeholder="Year End Celebration" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Date</label>
+                            <input type="text" id="eventDate" placeholder="December 15, 2025" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Venue</label>
+                            <input type="text" id="eventVenue" placeholder="Grand Ballroom" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mood/Tone -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Mood</label>
+                    <select id="mood" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-2">
+                        <option value="elegant">Elegant</option>
+                        <option value="bold">Bold & Vibrant</option>
+                        <option value="minimal">Minimal & Clean</option>
+                        <option value="luxurious">Luxurious</option>
+                        <option value="playful">Playful</option>
+                        <option value="serious">Serious & Professional</option>
+                        <option value="celebratory">Celebratory</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="generateBtn" class="mt-6 w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                ✨ Generate Design Inspiration
+            </button>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden">
+            <!-- Color Palette -->
+            <div class="design-card rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span>🎨</span> Historically-Inspired Color Palette
+                </h2>
+                <div id="colorPalette" class="flex flex-wrap gap-4 mb-4"></div>
+                <p id="colorDescription" class="text-sm text-gray-400"></p>
+            </div>
+
+            <!-- Typography -->
+            <div class="design-card rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span>📝</span> Typography Recommendations
+                </h2>
+                <div id="typography" class="space-y-4"></div>
+            </div>
+
+            <!-- Patterns & Motifs -->
+            <div class="design-card rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span>🔷</span> Patterns & Decorative Elements
+                </h2>
+                <div id="patterns" class="grid md:grid-cols-3 gap-6"></div>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="design-card rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span>👁️</span> Live Preview
+                </h2>
+                <div id="preview" class="invitation-preview p-8"></div>
+            </div>
+
+            <!-- Export Options -->
+            <div class="design-card rounded-xl p-6">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span>💾</span> Export & Implement
+                </h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+                        📄 Download Design Brief
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+                        🎨 Export Color Codes
+                    </button>
+                    <button class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+                        🖼️ Generate Mockups
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Historical design data
+        const historicalDesigns = {
+            'art-deco': {
+                name: 'Art Deco',
+                colors: {
+                    elegant: ['#C9A961', '#1C1C1C', '#FFFFFF', '#8B4513', '#2F4F4F'],
+                    bold: ['#FFD700', '#000000', '#FF6347', '#4169E1', '#32CD32'],
+                    luxurious: ['#D4AF37', '#0A0A0A', '#8B0000', '#F5F5DC', '#2F4F4F']
+                },
+                fonts: {
+                    primary: 'Poiret One, cursive',
+                    secondary: 'Raleway, sans-serif',
+                    accent: 'Bebas Neue, cursive'
+                },
+                patterns: ['geometric zigzags', 'sunburst motifs', 'stepped forms', 'chevron patterns'],
+                description: 'Characterized by bold geometric patterns, rich colors, and luxurious materials. Think Great Gatsby glamour.'
+            },
+            'bauhaus': {
+                name: 'Bauhaus',
+                colors: {
+                    minimal: ['#FF0000', '#FFFF00', '#0000FF', '#000000', '#FFFFFF'],
+                    elegant: ['#E63946', '#F1FAEE', '#A8DADC', '#457B9D', '#1D3557'],
+                    bold: ['#D90429', '#EDF2F4', '#8D99AE', '#2B2D42', '#EF233C']
+                },
+                fonts: {
+                    primary: 'Futura, sans-serif',
+                    secondary: 'Helvetica, sans-serif',
+                    accent: 'Avant Garde, sans-serif'
+                },
+                patterns: ['primary color blocks', 'circle and square compositions', 'diagonal lines', 'asymmetric balance'],
+                description: 'Form follows function. Clean lines, primary colors, and geometric shapes define this revolutionary movement.'
+            },
+            'african': {
+                name: 'African Renaissance',
+                colors: {
+                    celebratory: ['#E67E22', '#2ECC71', '#F39C12', '#8E44AD', '#C0392B'],
+                    elegant: ['#D68910', '#196F3D', '#783F04', '#641E16', '#1C2833'],
+                    bold: ['#FF6B35', '#F7931E', '#FDC830', '#009B77', '#DD4124']
+                },
+                fonts: {
+                    primary: 'Montserrat, sans-serif',
+                    secondary: 'Ubuntu, sans-serif',
+                    accent: 'Righteous, cursive'
+                },
+                patterns: ['kente cloth patterns', 'adinkra symbols', 'mudcloth geometric', 'tribal motifs'],
+                description: 'Rich earth tones, bold patterns, and symbolic motifs celebrating African heritage and Madiba\'s legacy.'
+            },
+            'victorian': {
+                name: 'Victorian',
+                colors: {
+                    elegant: ['#4A0E0E', '#2F4538', '#D4AF37', '#F5F5DC', '#8B4513'],
+                    luxurious: ['#800020', '#2C5530', '#FFD700', '#FFF8DC', '#654321']
+                },
+                fonts: {
+                    primary: 'Playfair Display, serif',
+                    secondary: 'Crimson Text, serif',
+                    accent: 'Cinzel Decorative, cursive'
+                },
+                patterns: ['damask', 'floral wallpaper', 'ornate borders', 'filigree details'],
+                description: 'Ornate, elaborate designs with rich colors and intricate details. Elegance and sophistication.'
+            },
+            'swiss': {
+                name: 'Swiss Modernism',
+                colors: {
+                    minimal: ['#000000', '#FFFFFF', '#FF0000', '#0066CC', '#CCCCCC'],
+                    elegant: ['#2C3E50', '#ECF0F1', '#E74C3C', '#3498DB', '#95A5A6']
+                },
+                fonts: {
+                    primary: 'Helvetica Neue, sans-serif',
+                    secondary: 'Univers, sans-serif',
+                    accent: 'Akzidenz-Grotesk, sans-serif'
+                },
+                patterns: ['grid systems', 'mathematical precision', 'white space', 'photographic elements'],
+                description: 'Clean, objective, and functional. Grid-based layouts with sans-serif typography and asymmetric compositions.'
+            },
+            'memphis': {
+                name: 'Memphis Design',
+                colors: {
+                    bold: ['#FF6B9D', '#C06C84', '#F67280', '#FEC601', '#6C5CE7'],
+                    playful: ['#FF3838', '#FFE162', '#3DC1D3', '#574B90', '#FD79A8']
+                },
+                fonts: {
+                    primary: 'Archivo Black, sans-serif',
+                    secondary: 'Poppins, sans-serif',
+                    accent: 'Bungee, cursive'
+                },
+                patterns: ['squiggly lines', 'confetti dots', 'geometric chaos', 'bold stripes'],
+                description: '1980s postmodern design with bold colors, geometric patterns, and playful asymmetry.'
+            }
+        };
+
+        const projectType = document.getElementById('projectType');
+        const eventDetails = document.getElementById('eventDetails');
+        const generateBtn = document.getElementById('generateBtn');
+        const results = document.getElementById('results');
+
+        // Show/hide event details
+        projectType.addEventListener('change', () => {
+            eventDetails.classList.toggle('hidden', projectType.value !== 'event');
+        });
+
+        // Generate design inspiration
+        generateBtn.addEventListener('click', () => {
+            const era = document.getElementById('historicalEra').value;
+            const mood = document.getElementById('mood').value;
+            const sector = document.getElementById('sector').value;
+            const type = projectType.value;
+
+            generateDesign(era, mood, sector, type);
+        });
+
+        function generateDesign(era, mood, sector, type) {
+            const design = historicalDesigns[era];
+            const colors = design.colors[mood] || design.colors.elegant || Object.values(design.colors)[0];
+
+            // Show results
+            results.classList.remove('hidden');
+            results.scrollIntoView({ behavior: 'smooth' });
+
+            // Generate color palette
+            const paletteHTML = colors.map((color, i) => `
+                <div class="text-center">
+                    <div class="color-swatch" style="background-color: ${color}" 
+                         onclick="navigator.clipboard.writeText('${color}')"></div>
+                    <p class="text-xs mt-2 font-mono">${color}</p>
+                </div>
+            `).join('');
+            document.getElementById('colorPalette').innerHTML = paletteHTML;
+            document.getElementById('colorDescription').textContent = design.description;
+
+            // Generate typography
+            const typographyHTML = `
+                <div class="p-4 bg-gray-800 rounded-lg">
+                    <p class="text-sm text-gray-400 mb-2">Primary (Headings)</p>
+                    <p class="text-3xl font-bold" style="font-family: ${design.fonts.primary}">${design.name} Typography</p>
+                    <p class="text-xs text-gray-500 mt-1">${design.fonts.primary}</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg">
+                    <p class="text-sm text-gray-400 mb-2">Secondary (Body)</p>
+                    <p class="text-lg" style="font-family: ${design.fonts.secondary}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="text-xs text-gray-500 mt-1">${design.fonts.secondary}</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg">
+                    <p class="text-sm text-gray-400 mb-2">Accent</p>
+                    <p class="text-2xl font-bold" style="font-family: ${design.fonts.accent}">FEATURED TEXT</p>
+                    <p class="text-xs text-gray-500 mt-1">${design.fonts.accent}</p>
+                </div>
+            `;
+            document.getElementById('typography').innerHTML = typographyHTML;
+
+            // Generate patterns
+            const patternsHTML = design.patterns.map(pattern => `
+                <div class="text-center">
+                    <div class="pattern-preview mb-3" style="background: ${generatePatternCSS(pattern, colors)}"></div>
+                    <p class="text-sm capitalize">${pattern}</p>
+                </div>
+            `).join('');
+            document.getElementById('patterns').innerHTML = patternsHTML;
+
+            // Generate preview based on type
+            generatePreview(type, design, colors, sector);
+        }
+
+        function generatePatternCSS(pattern, colors) {
+            const patterns = {
+                'geometric zigzags': `repeating-linear-gradient(45deg, ${colors[0]}, ${colors[0]} 10px, ${colors[1]} 10px, ${colors[1]} 20px)`,
+                'primary color blocks': `linear-gradient(to right, ${colors[0]} 33%, ${colors[1]} 33%, ${colors[1]} 66%, ${colors[2]} 66%)`,
+                'kente cloth patterns': `repeating-linear-gradient(0deg, ${colors[0]}, ${colors[0]} 5px, ${colors[1]} 5px, ${colors[1]} 10px, ${colors[2]} 10px, ${colors[2]} 15px)`,
+                'damask': `radial-gradient(circle, ${colors[0]} 30%, transparent 30%), radial-gradient(circle, ${colors[1]} 30%, transparent 30%)`,
+                default: `linear-gradient(135deg, ${colors[0]} 25%, transparent 25%), linear-gradient(225deg, ${colors[1]} 25%, transparent 25%)`
+            };
+            return patterns[pattern] || patterns.default;
+        }
+
+        function generatePreview(type, design, colors, sector) {
+            const previewContainer = document.getElementById('preview');
+            
+            if (type === 'event') {
+                const eventName = document.getElementById('eventName').value || 'Year End Celebration';
+                const eventDate = document.getElementById('eventDate').value || 'December 15, 2025';
+                const eventVenue = document.getElementById('eventVenue').value || 'Grand Ballroom';
+                
+                previewContainer.innerHTML = `
+                    <div class="text-center" style="font-family: ${design.fonts.primary}">
+                        <div class="mb-8">
+                            <div class="text-6xl mb-4" style="color: ${colors[0]}">✨</div>
+                            <h1 class="text-4xl font-bold mb-2" style="color: ${colors[1]}">${eventName}</h1>
+                            <div class="w-24 h-1 mx-auto mb-6" style="background: linear-gradient(to right, ${colors[0]}, ${colors[2]})"></div>
+                        </div>
+                        
+                        <div class="space-y-4 text-lg" style="font-family: ${design.fonts.secondary}; color: ${colors[3]}">
+                            <p><strong>Date:</strong> ${eventDate}</p>
+                            <p><strong>Venue:</strong> ${eventVenue}</p>
+                            <p><strong>Dress Code:</strong> ${design.name} Inspired Elegance</p>
+                        </div>
+                        
+                        <div class="mt-8 p-4 rounded-lg" style="background-color: ${colors[0]}20; border: 2px solid ${colors[0]}">
+                            <p class="text-sm italic" style="color: ${colors[1]}">
+                                "Join us for an evening celebrating achievements, inspired by the timeless elegance of ${design.name} design."
+                            </p>
+                        </div>
+                        
+                        <div class="mt-8 text-xs" style="color: ${colors[4]}">
+                            <p>Powered by FAA.ZONE Sovereign Scrolls | ${sector.toUpperCase()} Sector</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                previewContainer.innerHTML = `
+                    <div class="text-center p-8">
+                        <div class="text-5xl mb-4">${getSectorIcon(sector)}</div>
+                        <h2 class="text-3xl font-bold mb-4" style="color: ${colors[0]}; font-family: ${design.fonts.primary}">
+                            ${design.name}-Inspired ${type.charAt(0).toUpperCase() + type.slice(1)}
+                        </h2>
+                        <div class="w-32 h-1 mx-auto mb-6" style="background: linear-gradient(to right, ${colors[0]}, ${colors[2]})"></div>
+                        <p class="text-lg mb-6" style="font-family: ${design.fonts.secondary}; color: ${colors[3]}">
+                            A ${design.name.toLowerCase()} approach to modern ${type} design for the ${sector} sector
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 mt-8">
+                            ${colors.slice(0, 3).map(color => `
+                                <div class="h-20 rounded-lg" style="background-color: ${color}"></div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function getSectorIcon(sector) {
+            const icons = {
+                agriculture: '🌱', banking: '🏦', creative: '🖋️', education: '📚',
+                health: '⚕️', logistics: '📦', fashion: '✂️', technology: '💻'
+            };
+            return icons[sector] || '🎨';
+        }
+    </script>
+</body>
+</html>
